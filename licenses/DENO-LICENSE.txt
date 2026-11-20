@@ -1,0 +1,8 @@
+Deno is distributed under the MIT License.
+
+Project and complete license text:
+https://github.com/denoland/deno
+https://github.com/denoland/deno/blob/main/LICENSE.md
+
+Bundled version: Deno 2.9.5, x86_64-pc-windows-msvc.
+Deno is included as a JavaScript runtime used by yt-dlp for modern YouTube extraction.

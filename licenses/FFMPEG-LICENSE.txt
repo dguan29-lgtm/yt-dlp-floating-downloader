@@ -1,0 +1,10 @@
+The bundled FFmpeg executable reports a GPL version 3 build.
+
+It is redistributed under the GNU General Public License version 3 or (at your option) any later version. The complete license text is available at:
+https://www.gnu.org/licenses/gpl-3.0.txt
+
+Corresponding source and reproducible build scripts are available from:
+https://ffmpeg.org/download.html
+https://github.com/BtbN/FFmpeg-Builds
+
+The exact bundled build identifier and source information are recorded in THIRD-PARTY-NOTICES.txt and BUILD-INFO.txt.

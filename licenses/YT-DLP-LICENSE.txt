@@ -1,0 +1,7 @@
+yt-dlp is released into the public domain under The Unlicense.
+
+For the complete current license text and source, see:
+https://github.com/yt-dlp/yt-dlp/blob/master/LICENSE
+https://github.com/yt-dlp/yt-dlp
+
+This package bundles an unmodified yt-dlp Windows executable for convenience.

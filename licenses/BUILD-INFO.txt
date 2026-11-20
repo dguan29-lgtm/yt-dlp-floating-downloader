@@ -1,0 +1,9 @@
+Package: yt-dlp Floating Downloader
+Version: 3.4.0
+Target: Windows 10/11 x64, Google Chrome
+Extension ID: okbefieikffjgofllaokdgohmmbclfop
+Native host: .NET Framework 4.x C# executable
+yt-dlp: 2026.07.04
+FFmpeg: N-126188-g426841da9d-20260817, BtbN win64 GPL build
+Deno: 2.9.5, x86_64-pc-windows-msvc
+Build date: 2026-08-19

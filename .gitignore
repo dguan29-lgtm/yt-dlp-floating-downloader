@@ -1,0 +1,23 @@
+# Agent / dev artifacts — not part of the product
+.workbuddy/
+.installed-backup-*/
+*.bak*
+
+# One-off binary patching/inspection utilities (dev-only, hardcoded paths)
+scripts/inspect_*.py
+scripts/patch_*.py
+
+# User runtime data
+payload/runtime/
+
+# Third-party binaries are ~255 MB; fetch them with scripts/Fetch-Tools.ps1
+# (yt-dlp-native-host.exe is tracked — it is built from this repo's own source)
+payload/tools/*.exe
+
+# Build output / archives
+dist/
+*.zip
+
+# OS noise
+Thumbs.db
+Desktop.ini

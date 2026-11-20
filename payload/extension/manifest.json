@@ -1,0 +1,36 @@
+{
+  "manifest_version": 3,
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAwBYFlwimloypl8RwnN3nIOVrVCw+IEteq1eKXcCx77wxhfiMJc7zqua0vaxuxypOwE/C/oklBKXXqlbGbLF/7r7ZCcMTutjxnVmBLTON39pmSMBgvjrmCmS8H/ILlaM4YMnjxLZnlnwE9WsbHhP6U7dNHcy80jkVBhf2bR670WwJ+TtTaGPEgSzrGDvKSSmkrZZV0ks0eEMOPHblcJTnoW5vRK4ZaWtHNfvJ47sw26cTGyRlZtxcCBfQrtvBDkjOEJMoRs24EoEOGsiAB0FjY75QjouWVDYjzapmiocI2bnj4DTOgxqe2t+PgG7F56oxfOg366LMFx3f/WftFuNWlQIDAQAB",
+  "name": "yt-dlp Floating Downloader",
+  "version": "3.6.0",
+  "description": "Download buttons for supported public videos",
+  "permissions": ["cookies", "nativeMessaging", "tabs"],
+  "host_permissions": [
+    "https://douyin.com/*", "https://*.douyin.com/*", "https://bilibili.com/*", "https://*.bilibili.com/*",
+    "https://youtube.com/*", "https://*.youtube.com/*", "https://youtu.be/*",
+    "https://xiaohongshu.com/*", "https://*.xiaohongshu.com/*", "https://xhslink.com/*", "https://*.xhslink.com/*",
+    "https://x.com/*", "https://*.x.com/*", "https://twitter.com/*", "https://*.twitter.com/*",
+    "https://instagram.com/*", "https://*.instagram.com/*", "https://ddinstagram.com/*", "https://*.ddinstagram.com/*",
+    "https://tiktok.com/*", "https://*.tiktok.com/*",
+    "https://www.xinpianchang.com/*", "https://*.xinpianchang.com/*",
+    "https://www.liblib.tv/*", "https://*.liblib.tv/*"
+  ],
+  "background": { "service_worker": "background.js" },
+  "content_scripts": [{
+    "matches": [
+      "https://douyin.com/*", "https://*.douyin.com/*", "https://bilibili.com/*", "https://*.bilibili.com/*",
+      "https://youtube.com/*", "https://*.youtube.com/*", "https://xiaohongshu.com/*", "https://*.xiaohongshu.com/*",
+      "https://x.com/*", "https://*.x.com/*", "https://twitter.com/*", "https://*.twitter.com/*",
+      "https://instagram.com/*", "https://*.instagram.com/*",
+      "https://tiktok.com/*", "https://*.tiktok.com/*",
+      "https://www.xinpianchang.com/*", "https://www.liblib.tv/*", "https://*.liblib.tv/*"
+    ],
+    "js": ["content.js"], "run_at": "document_idle", "all_frames": false
+  }],
+  "web_accessible_resources": [{
+    "resources": ["page-fetch.js"],
+    "matches": ["https://douyin.com/*", "https://*.douyin.com/*"]
+  }],
+  "action": { "default_popup": "popup.html", "default_icon": { "16": "icon16.png", "48": "icon48.png", "128": "icon128.png" } },
+  "icons": { "16": "icon16.png", "48": "icon48.png", "128": "icon128.png" }
+}

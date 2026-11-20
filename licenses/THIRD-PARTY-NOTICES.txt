@@ -1,0 +1,26 @@
+Third-Party Notices
+===================
+
+This offline package redistributes the following independent tools:
+
+1. yt-dlp
+   Project: https://github.com/yt-dlp/yt-dlp
+   Bundled executable version: 2026.07.04
+   License: The Unlicense (see YT-DLP-LICENSE.txt and upstream repository)
+
+2. FFmpeg
+   Project: https://ffmpeg.org/
+   Bundled build source: BtbN/FFmpeg-Builds, win64 GPL build
+   Build identifier observed: N-126188-g426841da9d-20260817
+   License: GNU General Public License, version 3 or later for this build.
+   Source and build scripts: https://github.com/BtbN/FFmpeg-Builds
+   FFmpeg source: https://ffmpeg.org/download.html
+
+3. Deno
+   Project: https://github.com/denoland/deno
+   Bundled version: 2.9.5, x86_64-pc-windows-msvc
+   License: MIT License (see DENO-LICENSE.txt)
+   Purpose: JavaScript runtime used by yt-dlp for modern YouTube extraction.
+
+The Chrome extension and Native Messaging host in this package are provided as-is.
+No Google Chrome binaries are included.
