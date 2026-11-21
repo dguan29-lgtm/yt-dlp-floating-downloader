@@ -56,7 +56,7 @@ try {
 
     $settings = [ordered]@{ schemaVersion = 1; downloadDirectory = $DownloadDirectory }
     Write-Utf8NoBom (Join-Path $InstallRoot 'config\settings.json') ($settings | ConvertTo-Json)
-    $nativeManifest = [ordered]@{ name=$NativeHostName; description='Local yt-dlp download bridge'; path=(Join-Path $InstallRoot 'native\yt-dlp-native-host.exe'); type='stdio'; allowed_origins=@("chrome-extension://$ExpectedExtensionId/") }
+    $nativeManifest = [ordered]@{ name=$NativeHostName; description='Local yt-dlp download bridge'; path=(Join-Path $InstallRoot 'native\yt-dlp-native-host.exe'); type='stdio'; allowed_origins=@(Get-AllowedOrigins) }
     $nativeManifestPath = Join-Path $InstallRoot 'native\com.cherry.ytdlp.json'
     Write-Utf8NoBom $nativeManifestPath ($nativeManifest | ConvertTo-Json -Depth 4)
 

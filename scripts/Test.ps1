@@ -9,7 +9,7 @@ if (-not (Test-Path -LiteralPath $manifestPath)) { throw 'Native host manifest i
 if (-not (Test-Path -LiteralPath $hostPath)) { throw 'Native host executable is missing.' }
 
 $manifest = Get-Content -LiteralPath $manifestPath -Raw -Encoding UTF8 | ConvertFrom-Json
-if ($manifest.allowed_origins[0] -ne "chrome-extension://$ExpectedExtensionId/") { throw 'Native host extension ID mismatch.' }
+if (@($manifest.allowed_origins) -notcontains "chrome-extension://$ExpectedExtensionId/") { throw 'Native host extension ID mismatch.' }
 
 $json = '{"action":"ping"}'
 $payload = [Text.Encoding]::UTF8.GetBytes($json)

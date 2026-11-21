@@ -3,8 +3,11 @@ $script:ProductVersion = '3.6.0'
 $script:ProductGuid = '8a4ad44c-988f-4a67-bfa4-9e604c644e0d'
 $script:NativeHostName = 'com.cherry.ytdlp'
 $script:ExpectedExtensionId = 'okbefieikffjgofllaokdgohmmbclfop'
+# Chrome Web Store assigns its own ID on first upload; fill it in so the native host accepts both builds.
+$script:StoreExtensionId = ''
 $script:DefaultInstallRoot = Join-Path $env:LOCALAPPDATA 'CherryYtDlp'
 
+function Get-AllowedOrigins { @($ExpectedExtensionId, $StoreExtensionId) | Where-Object { $_ } | ForEach-Object { "chrome-extension://$_/" } }
 function Get-PackageRoot { Split-Path $PSScriptRoot -Parent }
 function Write-Utf8NoBom([string]$Path, [string]$Content) { [IO.File]::WriteAllText($Path, $Content, (New-Object Text.UTF8Encoding($false))) }
 function Get-ChromePath {

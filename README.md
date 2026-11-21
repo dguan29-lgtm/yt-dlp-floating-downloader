@@ -27,6 +27,10 @@ A Chrome extension that adds a floating download button on supported video pages
 
 卸载：双击 `卸载.cmd`。
 
+## Chrome 应用商店版
+
+商店版名为 Floating Video Downloader，不含 YouTube（Chrome 应用商店禁止下载 YouTube 的扩展）。商店版仍需要运行 `安装.cmd` 安装本地组件。打包：`python scripts/build_store_package.py`。上架资料见 [store/listing.md](store/listing.md)，步骤见 [store/提交教程.md](store/提交教程.md)，隐私政策见 [PRIVACY.md](PRIVACY.md)。
+
 ## 从源码安装
 
 ```powershell
