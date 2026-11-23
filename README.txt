@@ -1,7 +1,7 @@
-yt-dlp Floating Downloader 3.6.0
+yt-dlp Floating Downloader 3.7.0
 ================================
 
-支持：抖音、B站、YouTube、小红书、X/Twitter、Instagram、TikTok、新片场，
+支持：抖音、快手、B站、YouTube、小红书、X/Twitter、Instagram、TikTok、新片场，
 以及 Liblib 页面中公开播放的 MP4。
 
 快速安装

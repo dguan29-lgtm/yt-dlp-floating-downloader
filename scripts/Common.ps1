@@ -1,5 +1,5 @@
 $script:ProductName = 'yt-dlp Floating Downloader'
-$script:ProductVersion = '3.6.0'
+$script:ProductVersion = '3.7.0'
 $script:ProductGuid = '8a4ad44c-988f-4a67-bfa4-9e604c644e0d'
 $script:NativeHostName = 'com.cherry.ytdlp'
 $script:ExpectedExtensionId = 'okbefieikffjgofllaokdgohmmbclfop'

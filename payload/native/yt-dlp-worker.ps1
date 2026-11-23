@@ -119,6 +119,14 @@ try {
         $t = ([string]$request.title) -replace '[\\/:\*?"<>\|\r\n\t]', ' '
         $t = $t.Trim()
         if ($t) { if ($t.Length -gt 100) { $t = $t.Substring(0, 100).Trim() }; if ($t) { $directTitle = $t -replace '%', '%%' } }
+    } elseif ($site -eq 'kuaishou') {
+        $sourceUri = $null; $mediaUri = $null
+        if ($mode -ne 'direct-public-mp4' -or -not [Uri]::TryCreate($sourceUrl, [UriKind]::Absolute, [ref]$sourceUri) -or -not [Uri]::TryCreate($mediaUrl, [UriKind]::Absolute, [ref]$mediaUri)) { throw 'Kuaishou request is invalid' }
+        if ($sourceUri.Scheme -ne 'https' -or $sourceUri.Host -notmatch '(^|\.)kuaishou\.com$' -or $mediaUri.Scheme -ne 'https' -or $mediaUri.Host -notmatch '(^|\.)(ndcimgs|kwaivideo|yximgs|kwimgs|gifshow)\.com$' -or $mediaUri.UserInfo -or -not $mediaUri.IsDefaultPort -or $mediaUri.AbsolutePath -notmatch '\.mp4$' -or @($request.cookies).Count -ne 0) { throw 'Kuaishou supports public videos only' }
+        $downloadUrl = $mediaUri
+        $t = ([string]$request.title) -replace '[\\/:\*?"<>\|\r\n\t]', ' '
+        $t = $t.Trim()
+        if ($t) { if ($t.Length -gt 100) { $t = $t.Substring(0, 100).Trim() }; if ($t) { $directTitle = $t -replace '%', '%%' } }
     } elseif ($site -eq 'douyin' -and $mode -eq 'extractor' -and -not [string]::IsNullOrWhiteSpace($mediaUrl)) {
         $uri = $null; $mediaUri = $null
         if (-not [Uri]::TryCreate($sourceUrl, [UriKind]::Absolute, [ref]$uri) -or $uri.Scheme -ne 'https' -or $uri.Host -ne 'www.douyin.com' -or $uri.AbsolutePath -notmatch '^/video/\d+$') { throw 'Invalid douyin source page' }
@@ -160,6 +168,7 @@ try {
     $arguments = @('--ignore-config', '--ffmpeg-location', $ffmpegPath, '--format', 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/bestvideo+bestaudio/best', '--merge-output-format', 'mp4', '--output', (Join-Path $downloadDir $outputTemplate), '--windows-filenames', '--no-playlist', '--progress')
     if ($site -eq 'youtube') { $arguments += @('--js-runtimes', ('deno:' + $denoPath)) }
     if ($site -eq 'liblib') { $arguments += @('--referer', $sourceUrl) }
+    if ($site -eq 'kuaishou') { $arguments += @('--referer', 'https://www.kuaishou.com/') }
     if ($site -eq 'douyin') { $arguments += @('--referer', 'https://www.douyin.com/') }
     $proxyUrl = $null
     if (($settings.PSObject.Properties.Name -contains 'proxy') -and -not [string]::IsNullOrWhiteSpace([string]$settings.proxy)) {

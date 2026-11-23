@@ -50,6 +50,13 @@ function validLibPage(url) {
 function validLibMedia(url) {
   try { const u = new URL(url); return u.protocol === 'https:' && u.hostname === 'libtv-res.liblib.art' && !u.username && !u.password && !u.port && /\.mp4$/i.test(u.pathname); } catch { return false; }
 }
+function validKsPage(url) {
+  try { const u = new URL(url); return u.protocol === 'https:' && (u.hostname === 'kuaishou.com' || u.hostname.endsWith('.kuaishou.com')); } catch { return false; }
+}
+function validKsMedia(url) {
+  try { const u = new URL(url); return u.protocol === 'https:' && !u.username && !u.password && !u.port
+    && /(^|\.)(ndcimgs|kwaivideo|yximgs|kwimgs|gifshow)\.com$/i.test(u.hostname) && /\.mp4$/i.test(u.pathname); } catch { return false; }
+}
 function validDouyinMedia(url) {
   try { const u = new URL(url); return u.protocol === 'https:' && !u.username && !u.password && !u.port
     && /(^|\.)(douyin|365yg|douyinvod|amemv|zjcdn|bytedance|ibytedtos)\.com$/i.test(u.hostname); } catch { return false; }
@@ -78,6 +85,9 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
         task.mode = 'extractor'; task.sourcePageUrl = url; task.mediaUrl = null; task.cookies = await getCookies(site);
       } else if (site === 'liblib') {
         if (!validLibPage(page) || !validLibMedia(request.mediaUrl)) throw new Error('当前作品未提供可下载的公开 MP4');
+        task.mode = 'direct-public-mp4'; task.sourcePageUrl = page; task.mediaUrl = request.mediaUrl; task.url = request.mediaUrl; task.cookies = [];
+      } else if (site === 'kuaishou') {
+        if (!validKsPage(page) || !validKsMedia(request.mediaUrl)) throw new Error('当前视频未提供可下载的公开 MP4');
         task.mode = 'direct-public-mp4'; task.sourcePageUrl = page; task.mediaUrl = request.mediaUrl; task.url = request.mediaUrl; task.cookies = [];
       } else {
         if (!url || !cookieDomains(site).length) throw new Error('没有识别到受支持的视频链接');

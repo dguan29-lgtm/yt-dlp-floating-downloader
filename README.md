@@ -6,7 +6,7 @@ A Chrome extension that adds a floating download button on supported video pages
 
 ## 支持站点
 
-抖音、B 站、YouTube、小红书、X/Twitter、Instagram、TikTok、新片场，以及 Liblib 页面中公开播放的 MP4。
+抖音、快手、B 站、YouTube、小红书、X/Twitter、Instagram、TikTok、新片场，以及 Liblib 页面中公开播放的 MP4。
 
 ## 功能特性
 
@@ -67,6 +67,7 @@ yt-dlp.exe + ffmpeg.exe (+ deno.exe 用于 YouTube JS 运行时)
 - **Instagram / TikTok / X / YouTube**：需要代理。默认读系统代理；在 `config\settings.json` 加 `"proxy":"http://127.0.0.1:7892"` 可固定。
 - **新片场**：仅作品详情页 `https://www.xinpianchang.com/a数字ID`。
 - **Liblib**：仅页面中公开播放的视频；私有/付费/DRM 不显示按钮。
+- **快手**：仅页面中公开播放的视频（直连快手 CDN MP4，不经过提取器）；私有/登录受限内容不显示按钮。
 
 ## 日志与排查
 
